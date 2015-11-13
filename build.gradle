@@ -1,0 +1,39 @@
+buildscript {
+    repositories {
+        maven {
+            url "${repository_contextUrl}/plugins-release"
+        }
+    }
+    dependencies {
+        classpath 'com.sas.gradle.plugins:pangea:+'
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'jacoco'
+apply plugin: 'pangea'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenLocal()
+}
+
+dependencies {
+    testCompile 'junit:junit:4.11'
+    testCompile 'org.mockito:mockito-core:1.+'
+}
+
+test {
+  //testLogging.showStandardStreams = true
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.7'
+}
+
+
+///test
